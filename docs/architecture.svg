@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" role="img" aria-labelledby="t d" font-family="DM Sans, Arial, sans-serif">
+  <title id="t">BazaarGrid layered architecture</title>
+  <desc id="d">Customers and sellers use a browser presentation layer. The application layer runs order, catalogue, commission and returns services. A MySQL data layer holds sellers, products, orders and commissions. A decision support layer computes vendor GMV and return rates for the dashboard.</desc>
+  <defs>
+    <marker id="ar" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1b1b3a"/></marker>
+  </defs>
+  <rect width="1000" height="620" rx="16" fill="#fffdf8"/>
+
+  <!-- Users -->
+  <g font-size="14" font-weight="700" fill="#1b1b3a" text-anchor="middle">
+    <rect x="60" y="24" width="200" height="46" rx="23" fill="#f7f2ea" stroke="#1b1b3a" stroke-width="2"/><text x="160" y="53">Customers</text>
+    <rect x="400" y="24" width="200" height="46" rx="23" fill="#f7f2ea" stroke="#1b1b3a" stroke-width="2"/><text x="500" y="53">Sellers / Vendors</text>
+    <rect x="740" y="24" width="200" height="46" rx="23" fill="#f7f2ea" stroke="#1b1b3a" stroke-width="2"/><text x="840" y="53">Marketplace Admin</text>
+  </g>
+  <g stroke="#1b1b3a" stroke-width="2" marker-end="url(#ar)">
+    <line x1="160" y1="70" x2="160" y2="104"/><line x1="500" y1="70" x2="500" y2="104"/><line x1="840" y1="70" x2="840" y2="104"/>
+  </g>
+
+  <!-- Presentation layer -->
+  <rect x="40" y="108" width="920" height="92" rx="14" fill="#e4572e"/>
+  <text x="62" y="136" font-size="13" font-weight="700" fill="#fff" letter-spacing="2">PRESENTATION LAYER</text>
+  <g font-size="14" font-weight="600" fill="#1b1b3a" text-anchor="middle">
+    <rect x="62" y="148" width="270" height="40" rx="10" fill="#fffdf8"/><text x="197" y="173">Storefront (HTML / CSS / JS)</text>
+    <rect x="365" y="148" width="270" height="40" rx="10" fill="#fffdf8"/><text x="500" y="173">Seller order screens</text>
+    <rect x="668" y="148" width="270" height="40" rx="10" fill="#fffdf8"/><text x="803" y="173">Analytics dashboard (Chart.js)</text>
+  </g>
+
+  <!-- Application layer -->
+  <rect x="40" y="232" width="920" height="120" rx="14" fill="#1b1b3a"/>
+  <text x="62" y="260" font-size="13" font-weight="700" fill="#f2b134" letter-spacing="2">APPLICATION LAYER  -  TRANSACTION PROCESSING (TPS)</text>
+  <g font-size="14" font-weight="600" fill="#1b1b3a" text-anchor="middle">
+    <rect x="62" y="276" width="205" height="62" rx="10" fill="#f7f2ea"/><text x="164" y="303">Catalogue service</text><text x="164" y="323" font-size="12" font-weight="400">list / update products</text>
+    <rect x="283" y="276" width="205" height="62" rx="10" fill="#f7f2ea"/><text x="385" y="303">Order service</text><text x="385" y="323" font-size="12" font-weight="400">place, ship, deliver</text>
+    <rect x="504" y="276" width="205" height="62" rx="10" fill="#f7f2ea"/><text x="606" y="303">Commission engine</text><text x="606" y="323" font-size="12" font-weight="400">rate x order value</text>
+    <rect x="725" y="276" width="213" height="62" rx="10" fill="#f7f2ea"/><text x="831" y="303">Returns handler</text><text x="831" y="323" font-size="12" font-weight="400">reverse commission</text>
+  </g>
+
+  <!-- Data layer -->
+  <rect x="40" y="384" width="920" height="104" rx="14" fill="#17a398"/>
+  <text x="62" y="412" font-size="13" font-weight="700" fill="#fff" letter-spacing="2">DATA LAYER  -  MySQL (bazaargrid)</text>
+  <g font-size="14" font-weight="700" fill="#1b1b3a" text-anchor="middle">
+    <rect x="62" y="424" width="205" height="48" rx="10" fill="#fffdf8"/><text x="164" y="454">sellers</text>
+    <rect x="283" y="424" width="205" height="48" rx="10" fill="#fffdf8"/><text x="385" y="454">products</text>
+    <rect x="504" y="424" width="205" height="48" rx="10" fill="#fffdf8"/><text x="606" y="454">orders</text>
+    <rect x="725" y="424" width="213" height="48" rx="10" fill="#fffdf8"/><text x="831" y="454">commissions</text>
+  </g>
+
+  <!-- Decision support layer -->
+  <rect x="40" y="520" width="920" height="80" rx="14" fill="#f2b134"/>
+  <text x="62" y="546" font-size="13" font-weight="700" fill="#1b1b3a" letter-spacing="2">DECISION SUPPORT (DSS) LAYER</text>
+  <g font-size="14" font-weight="600" fill="#1b1b3a" text-anchor="middle">
+    <rect x="62" y="556" width="270" height="32" rx="8" fill="#fffdf8"/><text x="197" y="577">Vendor GMV</text>
+    <rect x="365" y="556" width="270" height="32" rx="8" fill="#fffdf8"/><text x="500" y="577">Return rate analysis</text>
+    <rect x="668" y="556" width="270" height="32" rx="8" fill="#fffdf8"/><text x="803" y="577">Vendor scorecard + risk bands</text>
+  </g>
+
+  <!-- Flow arrows between layers -->
+  <g stroke="#1b1b3a" stroke-width="2" marker-end="url(#ar)">
+    <line x1="500" y1="200" x2="500" y2="230"/>
+    <line x1="500" y1="352" x2="500" y2="382"/>
+    <line x1="500" y1="488" x2="500" y2="518"/>
+  </g>
+  <path d="M960 560 H985 V148 H962" fill="none" stroke="#1b1b3a" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#ar)"/>
+  <text x="978" y="360" font-size="11" fill="#1b1b3a" transform="rotate(90 978 360)" text-anchor="middle">results back to dashboard</text>
+</svg>
