@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BazaarGrid - Multi-Vendor Online Marketplace System with vendor GMV and return-rate analytics.">
+  <title>BazaarGrid | Multi-Vendor Marketplace Analytics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="#home" class="brand"><span class="brand-mark"><i></i><i></i><i></i><i></i></span>BazaarGrid</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#dashboard">Dashboard</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#data-model">Data Model</a></li>
+      <li><a href="#architecture">Architecture</a></li>
+      <li><a href="#technology">Technology</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <!-- HOME -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Multi-Vendor Online Marketplace System</p>
+        <h1>One marketplace. Every vendor, <em>measured.</em></h1>
+        <p class="lead">Process orders from many independent sellers in one place, then see which vendors drive Gross Merchandise Value and which ones send the most returns back.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#dashboard">Open the dashboard &rarr;</a>
+          <a class="btn ghost" href="#architecture">See the architecture</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong id="stat-gmv">-</strong><span>Total GMV</span></div>
+          <div><strong id="stat-vendors">12</strong><span>Active vendors</span></div>
+          <div><strong id="stat-return">-</strong><span>Return rate</span></div>
+        </div>
+      </div>
+
+      <div class="hero-card" aria-label="Top vendors by GMV">
+        <span class="chip one">Live from MySQL data<small>Orders &middot; Commissions</small></span>
+        <h4>Top vendors by GMV</h4>
+        <div id="hero-vendors"></div>
+        <span class="chip two">Return-rate watch<small>Flags vendors above 15%</small></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- DASHBOARD PREVIEW -->
+  <section class="band" id="dashboard">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Decision Support</p>
+        <h2>BazaarGrid Analytics Dashboard</h2>
+        <p>Filter by month, category or vendor to see GMV, commissions and return behaviour update instantly.</p>
+      </div>
+      <div class="preview-frame reveal">
+        <div class="preview-bar"><i></i><i></i><i></i><span>bazaargrid / dashboard.html</span></div>
+        <iframe src="dashboard.html?embed=1" title="BazaarGrid analytics dashboard" loading="lazy"></iframe>
+      </div>
+      <div class="preview-cta"><a class="btn" href="dashboard.html">Open full dashboard</a></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container about-grid">
+      <div class="reveal">
+        <p class="eyebrow">About the project</p>
+        <div class="section-head" style="margin-bottom:1rem"><h2>A transaction system with a decision layer on top</h2></div>
+        <p>BazaarGrid is a multi-vendor marketplace built as an E-Commerce / Transaction Processing System (TPS). Sellers list products, customers place orders, and the platform records a commission on every completed sale.</p>
+        <p>Four MySQL tables hold the transactions: <strong>Sellers</strong>, <strong>Products</strong>, <strong>Orders</strong> and <strong>Commissions</strong>. A Decision Support layer reads them to report each vendor's Gross Merchandise Value and return rate, so the marketplace team can reward strong sellers and coach risky ones.</p>
+      </div>
+      <div class="flow reveal">
+        <div class="flow-step"><b>01</b><div><strong>Seller lists a product</strong><span>Sellers and Products tables hold the catalogue.</span></div></div>
+        <div class="flow-step"><b>02</b><div><strong>Customer places an order</strong><span>An Orders row records amount, payment method and status.</span></div></div>
+        <div class="flow-step"><b>03</b><div><strong>Commission is booked</strong><span>The seller's rate is applied; returns reverse the commission.</span></div></div>
+        <div class="flow-step"><b>04</b><div><strong>DSS reports the result</strong><span>Vendor GMV and return rates feed the dashboard.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="band" id="features">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Project capabilities</p>
+        <h2>Key Marketplace Features</h2>
+        <p>Operational transactions plus the analytics that make sense of them.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature reveal"><div class="num">01</div><h3>Vendor GMV</h3><p>Rank sellers by the total value of orders sold, and compare gross against net GMV after returns.</p></article>
+        <article class="feature reveal"><div class="num">02</div><h3>Return Rate Analysis</h3><p>Track returned versus completed orders per vendor, with High, Medium and Low risk bands.</p></article>
+        <article class="feature reveal"><div class="num">03</div><h3>Commission Tracking</h3><p>See platform earnings and what is paid, pending or reversed because of a return.</p></article>
+        <article class="feature reveal"><div class="num">04</div><h3>Order Processing</h3><p>Follow every order from Placed to Shipped, Delivered, Returned or Cancelled.</p></article>
+        <article class="feature reveal"><div class="num">05</div><h3>Category Insights</h3><p>Understand which product categories contribute the most GMV to the marketplace.</p></article>
+        <article class="feature reveal"><div class="num">06</div><h3>Return Reasons</h3><p>Find out why items come back, such as defects, size issues or wrong items, and act on it.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- DATA MODEL -->
+  <section id="data-model">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Core MySQL tables</p>
+        <h2>The Data Model</h2>
+        <p>Four input tables drive every number on the dashboard.</p>
+      </div>
+      <div class="table-grid reveal">
+        <div class="db-table"><header>sellers</header><ul>
+          <li class="key">seller_id (PK)</li><li>store_name</li><li>owner_name</li><li>city</li><li>category</li><li>joined_on</li><li>commission_rate</li><li>status</li></ul></div>
+        <div class="db-table"><header>products</header><ul>
+          <li class="key">product_id (PK)</li><li class="fk">seller_id (FK)</li><li>product_name</li><li>category</li><li>unit_price</li><li>stock_qty</li></ul></div>
+        <div class="db-table"><header>orders</header><ul>
+          <li class="key">order_id (PK)</li><li class="fk">seller_id (FK)</li><li class="fk">product_id (FK)</li><li>order_date</li><li>quantity</li><li>order_amount</li><li>payment_method</li><li>order_status</li><li>return_reason</li></ul></div>
+        <div class="db-table"><header>commissions</header><ul>
+          <li class="key">commission_id (PK)</li><li class="fk">order_id (FK)</li><li class="fk">seller_id (FK)</li><li>commission_rate</li><li>commission_amount</li><li>payout_status</li><li>payout_date</li></ul></div>
+      </div>
+      <p class="legend"><span class="k">Red</span> = primary key &nbsp;&middot;&nbsp; <span class="f">Blue</span> = foreign key. Run <code>database/schema.sql</code> then <code>database/seed.sql</code> to build it in MySQL.</p>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section class="band" id="architecture">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">System design</p>
+        <h2>Architecture</h2>
+        <p>A layered design from the customer's browser down to the MySQL tables, with a Decision Support layer reading the same data.</p>
+      </div>
+      <div class="arch-wrap reveal">
+        <img src="docs/architecture.svg" alt="Layered architecture of the BazaarGrid marketplace: presentation, application (TPS), data and decision support layers">
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNOLOGY -->
+  <section id="technology">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Project technology</p>
+        <h2>Technology Stack</h2>
+      </div>
+      <div class="tech-list reveal">
+        <span class="tech">MySQL</span><span class="tech">HTML5</span><span class="tech">CSS3</span>
+        <span class="tech">JavaScript</span><span class="tech">Chart.js</span><span class="tech">E-Commerce / TPS</span>
+        <span class="tech">Visual Paradigm</span><span class="tech">GitHub Pages</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <strong>BAZAARGRID</strong>
+    Multi-Vendor Online Marketplace System &middot; Academic Project<br>
+    Built with MySQL, HTML, CSS, JavaScript and Chart.js by M Pradeep
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

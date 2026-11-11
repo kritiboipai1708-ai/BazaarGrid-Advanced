@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | BazaarGrid</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:ital,wght@0,600;0,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="dash">
+
+<header class="dash-top">
+  <a href="index.html" class="brand"><span class="brand-mark"><i></i><i></i><i></i><i></i></span>BazaarGrid</a>
+  <span class="dash-title">Vendor Analytics</span>
+  <a class="back-link" href="index.html">&larr; Back to site</a>
+</header>
+
+<main class="dash-main">
+  <section class="filters" aria-label="Filters">
+    <label>From
+      <select id="f-from"></select>
+    </label>
+    <label>To
+      <select id="f-to"></select>
+    </label>
+    <label>Category
+      <select id="f-category"></select>
+    </label>
+    <label>Vendor
+      <select id="f-vendor"></select>
+    </label>
+    <button id="f-reset" class="reset" type="button">Reset</button>
+  </section>
+
+  <section class="kpis" aria-label="Key figures">
+    <article class="kpi k1"><span>Total GMV</span><strong id="k-gmv">-</strong><small id="k-gmv-sub"></small></article>
+    <article class="kpi k2"><span>Net GMV (after returns)</span><strong id="k-net">-</strong><small id="k-net-sub"></small></article>
+    <article class="kpi k3"><span>Orders placed</span><strong id="k-orders">-</strong><small id="k-orders-sub"></small></article>
+    <article class="kpi k4"><span>Return rate</span><strong id="k-rate">-</strong><small id="k-rate-sub"></small></article>
+    <article class="kpi k5"><span>Platform commission</span><strong id="k-comm">-</strong><small id="k-comm-sub"></small></article>
+    <article class="kpi k6"><span>Avg. order value</span><strong id="k-aov">-</strong><small id="k-aov-sub"></small></article>
+  </section>
+
+  <section class="grid">
+    <article class="card wide">
+      <h2>Vendor GMV</h2>
+      <p class="hint">Gross value of non-cancelled orders, by vendor.</p>
+      <div class="chart tall"><canvas id="c-vendor-gmv"></canvas></div>
+    </article>
+    <article class="card wide">
+      <h2>Monthly GMV and returned value</h2>
+      <p class="hint">Sales that came back reduce net GMV.</p>
+      <div class="chart tall"><canvas id="c-monthly"></canvas></div>
+    </article>
+    <article class="card wide">
+      <h2>Return rate by vendor</h2>
+      <p class="hint">Returned &divide; (delivered + returned). Red = 15% or more, amber = 8% or more.</p>
+      <div class="chart tall"><canvas id="c-return-rate"></canvas></div>
+    </article>
+    <article class="card">
+      <h2>Return reasons</h2>
+      <p class="hint">Why items were sent back.</p>
+      <div class="chart"><canvas id="c-reasons"></canvas></div>
+    </article>
+    <article class="card">
+      <h2>GMV by category</h2>
+      <p class="hint">Share of marketplace GMV.</p>
+      <div class="chart"><canvas id="c-category"></canvas></div>
+    </article>
+    <article class="card">
+      <h2>Commission status</h2>
+      <p class="hint">Paid, pending and reversed (returned orders).</p>
+      <div class="chart"><canvas id="c-commission"></canvas></div>
+    </article>
+  </section>
+
+  <section class="card scorecard">
+    <h2>Vendor scorecard</h2>
+    <p class="hint">Click a column heading to sort.</p>
+    <div class="table-scroll">
+      <table id="scorecard">
+        <thead>
+          <tr>
+            <th data-key="store">Vendor</th>
+            <th data-key="category">Category</th>
+            <th data-key="orders" class="num">Orders</th>
+            <th data-key="gmv" class="num">GMV</th>
+            <th data-key="net" class="num">Net GMV</th>
+            <th data-key="commission" class="num">Commission</th>
+            <th data-key="rate" class="num">Return rate</th>
+            <th data-key="risk">Risk</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
