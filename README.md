@@ -47,4 +47,5 @@ Push the folder to a GitHub repository, then Settings > Pages > deploy from the 
 The data is synthetic, generated for demonstration.
 ## Author 
 Kriti Boipai
+
 Business Analytics | SQL | Power BI | Data Analysis
