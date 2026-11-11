@@ -1,0 +1,77 @@
+/* BazaarGrid - dashboard page */
+body.dash { background: var(--cream); }
+.dash-top {
+  display: flex; align-items: center; gap: 1.2rem; padding: 0 1.6rem; height: 64px;
+  background: var(--ink); color: var(--paper);
+}
+.dash-top .brand { color: var(--paper); font-size: 1.25rem; }
+.dash-top .brand-mark { background: rgba(255, 255, 255, .12); }
+.dash-title { padding-left: 1.2rem; border-left: 1px solid rgba(255, 255, 255, .2); color: #c9c9e3; font-size: .9rem; letter-spacing: .08em; text-transform: uppercase; }
+.back-link { margin-left: auto; font-size: .9rem; color: var(--saffron); font-weight: 600; }
+.back-link:hover { text-decoration: underline; }
+body.embed .dash-top .back-link { display: none; }
+
+.dash-main { width: min(1240px, 96%); margin: 0 auto; padding: 1.6rem 0 3rem; }
+
+/* Filters */
+.filters {
+  display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-end;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 1rem 1.2rem; margin-bottom: 1.4rem;
+}
+.filters label { display: flex; flex-direction: column; gap: .3rem; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+.filters select {
+  font: inherit; font-size: .92rem; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--ink);
+  padding: .55rem .8rem; border-radius: 10px; border: 1px solid var(--line); background: var(--cream); min-width: 150px;
+}
+.filters select:focus-visible, .reset:focus-visible, th:focus-visible { outline: 3px solid var(--saffron); outline-offset: 2px; }
+.reset { font: inherit; font-weight: 600; padding: .6rem 1.1rem; border-radius: 10px; border: 2px solid var(--ink); background: transparent; cursor: pointer; color: var(--ink); }
+.reset:hover { background: var(--ink); color: var(--paper); }
+
+/* KPI cards */
+.kpis { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; margin-bottom: 1.4rem; }
+.kpi { background: var(--paper); border: 1px solid var(--line); border-top: 5px solid var(--c, var(--vermilion)); border-radius: 14px; padding: 1rem 1.1rem; }
+.kpi span { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+.kpi strong { display: block; font-family: var(--font-head); font-size: 1.65rem; margin: .25rem 0 .1rem; font-variant-numeric: tabular-nums; }
+.kpi small { color: var(--ink-soft); font-size: .8rem; }
+.k1 { --c: var(--vermilion); } .k2 { --c: var(--teal); } .k3 { --c: var(--indigo); }
+.k4 { --c: #c0392b; } .k5 { --c: var(--saffron); } .k6 { --c: #6d6d92; }
+
+/* Cards and grid */
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-bottom: 1.2rem; }
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 1.2rem 1.3rem; min-width: 0; }
+.card.wide { grid-column: span 3; }
+.card h2 { font-size: 1.15rem; }
+.hint { color: var(--ink-soft); font-size: .85rem; margin: .15rem 0 .8rem; }
+.chart { position: relative; height: 270px; }
+.chart.tall { height: 330px; }
+@media (min-width: 1100px) {
+  .card.wide { grid-column: span 3; }
+  .grid .card.wide:nth-of-type(1), .grid .card.wide:nth-of-type(2) { grid-column: span 3; }
+}
+
+/* Scorecard table */
+.table-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+th, td { text-align: left; padding: .7rem .8rem; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); cursor: pointer; user-select: none; }
+th:hover { color: var(--ink); }
+th.sorted::after { content: " \25BE"; color: var(--vermilion); }
+th.sorted.asc::after { content: " \25B4"; }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+tbody tr:hover { background: var(--cream); }
+.badge { display: inline-block; padding: .15rem .65rem; border-radius: 999px; font-size: .75rem; font-weight: 700; }
+.badge.High { background: #fbe0da; color: #a12a12; }
+.badge.Medium { background: #fdf0cc; color: #8a5d00; }
+.badge.Low { background: #d5f1ed; color: #0b6b63; }
+.empty { text-align: center; color: var(--ink-soft); padding: 2rem; }
+
+@media (max-width: 1100px) { .kpis { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 820px) {
+  .grid { grid-template-columns: 1fr; }
+  .card.wide { grid-column: auto; }
+  .dash-title { display: none; }
+}
+@media (max-width: 560px) {
+  .kpis { grid-template-columns: 1fr 1fr; }
+  .filters select { min-width: 130px; }
+}
